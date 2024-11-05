@@ -1,0 +1,27 @@
+{
+  "id": "2eca84c0-6802-4e59-b816-4f1f55d1ebff",
+  "name": "Brehob04",
+  "publisher": "Impact Networking",
+  "brief": "Create Jobs",
+  "description": "Create Jobs from Sales Orders",
+  "version": "1.0.0.16",
+  "target": "Cloud",
+  "application": "1.0.0.0",
+  "platform": "24.0.0.0",
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true,
+    "applyToDevExtension": false
+  },
+  "features": [
+    "NOIMPLICITWITH"
+  ],
+  "idRanges": [
+    {
+      "from": 60100,
+      "to": 60149
+    }
+  ],
+  "runtime": "13.0"
+}
