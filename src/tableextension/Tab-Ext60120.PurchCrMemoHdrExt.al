@@ -1,10 +1,15 @@
-tableextension 60117 "Purchase Header Ext" extends "Purchase Header"
+tableextension 60120 "Purch. Cr. Memo Hdr. Ext" extends "Purch. Cr. Memo Hdr."
 {
     fields
     {
         field(60100; "Ship-to Phone No."; Text[30])
         {
             Caption = 'Ship-to Phone No.';
+            DataClassification = ToBeClassified;
+        }
+        field(60101; "BHB Ship-to Phone No."; Text[30])
+        {
+            Caption = 'BHB Ship-to Phone No.';
             DataClassification = ToBeClassified;
         }
         field(60110; "Shipping Agent Code"; code[10])
@@ -15,7 +20,7 @@ tableextension 60117 "Purchase Header Ext" extends "Purchase Header"
 
             trigger OnValidate()
             begin
-                If ShipAgent.get("Shipping Agent Code")then "Shipping Agent Account No.":=ShipAgent."Account No.";
+                If ShipAgent.get("Shipping Agent Code") then "Shipping Agent Account No." := ShipAgent."Account No.";
             end;
         }
         field(60120; "Shipping Agent Account No."; text[30])
@@ -24,5 +29,6 @@ tableextension 60117 "Purchase Header Ext" extends "Purchase Header"
             DataClassification = ToBeClassified;
         }
     }
-    var ShipAgent: record "Shipping Agent";
+    var
+        ShipAgent: record "Shipping Agent";
 }
