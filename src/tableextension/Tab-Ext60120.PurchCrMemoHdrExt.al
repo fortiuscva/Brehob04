@@ -2,11 +2,6 @@ tableextension 60120 "Purch. Cr. Memo Hdr. Ext" extends "Purch. Cr. Memo Hdr."
 {
     fields
     {
-        field(60100; "Ship-to Phone No."; Text[30])
-        {
-            Caption = 'Ship-to Phone No.';
-            DataClassification = ToBeClassified;
-        }
         field(60101; "BHB Ship-to Phone No."; Text[30])
         {
             Caption = 'BHB Ship-to Phone No.';
