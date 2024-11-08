@@ -118,7 +118,7 @@ report 60100 "Job Quote - Brehob"
             }
             dataitem("Job Task"; "Job Task")
             {
-                DataItemLink = "Job No."=field("No.");
+                DataItemLink = "Job No." = field("No.");
                 DataItemTableView = sorting("Job No.", "Job Task No.");
                 PrintOnlyIfDetail = true;
 
@@ -163,11 +163,11 @@ report 60100 "Job Quote - Brehob"
                 }
                 dataitem("Job Planning Line"; "Job Planning Line")
                 {
-                    DataItemLink = "Job No."=field("Job No."), "Job Task No."=field("Job Task No.");
+                    DataItemLink = "Job No." = field("Job No."), "Job Task No." = field("Job Task No.");
                     DataItemTableView = sorting("Job No.", "Job Task No.", "Line No.");
                     RequestFilterFields = "Job Task No.";
 
-                    column(ShowIntBody1; "Job Task"."Job Task Type" in["Job Task"."Job Task Type"::Heading, "Job Task"."Job Task Type"::"Begin-Total"])
+                    column(ShowIntBody1; "Job Task"."Job Task Type" in ["Job Task"."Job Task Type"::Heading, "Job Task"."Job Task Type"::"Begin-Total"])
                     {
                     }
                     column(Quantity; Quantity)
@@ -181,8 +181,8 @@ report 60100 "Job Quote - Brehob"
                     }
                     column(TotalPriceLCY; "Total Price (LCY)")
                     {
-                    AutoFormatExpression = CurrencyFormat;
-                    AutoFormatType = 10;
+                        AutoFormatExpression = CurrencyFormat;
+                        AutoFormatType = 10;
                     }
                     column(TotalPrice; "Total Price")
                     {
@@ -208,24 +208,25 @@ report 60100 "Job Quote - Brehob"
                     column(Indentation_JobTaskTotal; PadStr('', 2 * "Job Task".Indentation) + Description)
                     {
                     }
-                    column(ShowIntBody2; "Job Task"."Job Task Type" in["Job Task"."Job Task Type"::Total, "Job Task"."Job Task Type"::"End-Total"])
+                    column(ShowIntBody2; "Job Task"."Job Task Type" in ["Job Task"."Job Task Type"::Total, "Job Task"."Job Task Type"::"End-Total"])
                     {
                     }
-                    column(ShowIntBody3;("Job Task"."Job Task Type" in["Job Task"."Job Task Type"::Posting]) and PrintSection)
+                    column(ShowIntBody3; ("Job Task"."Job Task Type" in ["Job Task"."Job Task Type"::Posting]) and PrintSection)
                     {
                     }
                     trigger OnAfterGetRecord()
                     begin
-                        PrintSection:=true;
+                        PrintSection := true;
                         if "Line Type" = "Line Type"::Budget then begin
-                            PrintSection:=false;
+                            PrintSection := false;
                             CurrReport.Skip();
                         end;
-                        JobTotalValue+=("Unit Price" * Quantity);
+                        JobTotalValue += ("Unit Price" * Quantity);
                         if FirstLineHasBeenOutput then Clear(CompanyInfo.Picture);
-                        FirstLineHasBeenOutput:=true;
+                        FirstLineHasBeenOutput := true;
                         ConstructCurrencyFormatString();
                     end;
+
                     trigger OnPreDataItem()
                     begin
                         CompanyInfo.CalcFields(Picture);
@@ -234,14 +235,15 @@ report 60100 "Job Quote - Brehob"
                 trigger OnAfterGetRecord()
                 begin
                     if "Job Task Type" = "Job Task Type"::"Begin-Total" then begin
-                        if Indentation = 0 then TotalJob:=TotalLbl + ' ' + Description;
-                        HeaderJobTask:=PadStr('', 2 * Indentation) + Description;
-                        HeaderJobTaskNo:=Format("Job Task No.");
-                        TotalJobTask:=PadStr('', 2 * Indentation) + TotalLbl + ' ' + Description;
+                        if Indentation = 0 then TotalJob := TotalLbl + ' ' + Description;
+                        HeaderJobTask := PadStr('', 2 * Indentation) + Description;
+                        HeaderJobTaskNo := Format("Job Task No.");
+                        TotalJobTask := PadStr('', 2 * Indentation) + TotalLbl + ' ' + Description;
                     end;
-                    if((CurrentIndentation > 0) and (CurrentIndentation < Indentation)) or ("Job Task Type" = "Job Task Type"::"End-Total")then NewTaskGroup:=NewTaskGroup + 1;
-                    CurrentIndentation:=Indentation;
+                    if ((CurrentIndentation > 0) and (CurrentIndentation < Indentation)) or ("Job Task Type" = "Job Task Type"::"End-Total") then NewTaskGroup := NewTaskGroup + 1;
+                    CurrentIndentation := Indentation;
                 end;
+
                 trigger OnPreDataItem()
                 begin
                     CompanyInfo.CalcFields(Picture);
@@ -249,7 +251,7 @@ report 60100 "Job Quote - Brehob"
             }
             dataitem(Totals; "Integer")
             {
-                DataItemTableView = sorting(Number)where(Number=const(1));
+                DataItemTableView = sorting(Number) where(Number = const(1));
 
                 column(JobTotalValue; JobTotalValue)
                 {
@@ -259,14 +261,14 @@ report 60100 "Job Quote - Brehob"
             var
                 PaymentTerms: Record "Payment Terms";
             begin
-                JobTotalValue:=0;
-                NewTaskGroup:=0;
+                JobTotalValue := 0;
+                NewTaskGroup := 0;
                 FormatAddr.Company(CompanyAddr, CompanyInfo);
                 FormatAddr.JobBillTo(BillToAddr, Job);
                 FormatAddr_JobShipTo(ShipToAddr, Job);
                 Clear(PaymentTermsDesc);
-                if PaymentTerms.Get(Job."Payment Terms Code")then begin
-                    PaymentTermsDesc:=PaymentTerms.Description;
+                if PaymentTerms.Get(Job."Payment Terms Code") then begin
+                    PaymentTermsDesc := PaymentTerms.Description;
                 end;
             end;
         }
@@ -290,19 +292,19 @@ report 60100 "Job Quote - Brehob"
         layout("JobQuoteBH.rdlc")
         {
             Type = RDLC;
-            LayoutFile = './Local/JobQuoteBH.rdlc';
+            LayoutFile = './Src/report/Layout/JobQuoteBH.rdlc';
             Caption = 'Project Quote (RDLC)';
             Summary = 'The Project Quote (RDLC) provides a detailed layout.';
         }
     }
     labels
     {
-    JobNoLbl='Project No.';
-    JobDescriptionLbl='Description';
-    ExternalDocNoLbl='External Document No.:';
-    PaymentTermsLbl='Payment Terms:';
-    BillToLbl='BILL TO';
-    ShipToLbl='SHIP TO';
+        JobNoLbl = 'Project No.';
+        JobDescriptionLbl = 'Description';
+        ExternalDocNoLbl = 'External Document No.:';
+        PaymentTermsLbl = 'Payment Terms:';
+        BillToLbl = 'BILL TO';
+        ShipToLbl = 'SHIP TO';
     }
     trigger OnInitReport()
     begin
@@ -310,12 +312,14 @@ report 60100 "Job Quote - Brehob"
         JobsSetup.Get();
         ConstructCurrencyFormatString();
     end;
+
     trigger OnPreReport()
     begin
-        JobFilter:=Job.GetFilters();
-        JobTaskFilter:="Job Planning Line".GetFilters();
-        CompanyLogoPosition:=JobsSetup."Logo Position on Documents";
+        JobFilter := Job.GetFilters();
+        JobTaskFilter := "Job Planning Line".GetFilters();
+        CompanyLogoPosition := JobsSetup."Logo Position on Documents";
     end;
+
     local procedure ConstructCurrencyFormatString()
     var
         Currency: Record Currency;
@@ -325,47 +329,51 @@ report 60100 "Job Quote - Brehob"
     begin
         if Job."Currency Code" = '' then begin
             GLSetup.Get();
-            CurrencySymbol:=GLSetup.GetCurrencySymbol();
+            CurrencySymbol := GLSetup.GetCurrencySymbol();
         end
-        else
-        begin
-            if Currency.Get(Job."Currency Code")then;
-            CurrencySymbol:=Currency.GetCurrencySymbol();
+        else begin
+            if Currency.Get(Job."Currency Code") then;
+            CurrencySymbol := Currency.GetCurrencySymbol();
         end;
-        CurrencyFormat:=StrSubstNo(CurrencyLbl, CurrencySymbol);
+        CurrencyFormat := StrSubstNo(CurrencyLbl, CurrencySymbol);
     end;
-    local procedure FormatAddr_JobShipTo(var AddrArray: array[8]of Text[100]; var Job: Record Job)
+
+    local procedure FormatAddr_JobShipTo(var AddrArray: array[8] of Text[100]; var Job: Record Job)
     begin
         FormatAddr.FormatAddr(AddrArray, Job."Ship-to Name", Job."Ship-to Name 2", Job."Ship-to Contact", Job."Ship-to Address", Job."Ship-to Address 2", Job."Ship-to City", Job."Ship-to Post Code", Job."Ship-to County", Job."Ship-to Country/Region Code");
     end;
-    var JobsSetup: Record "Jobs Setup";
-    FormatAddr: Codeunit "Format Address";
-    JobFilter: Text;
-    JobTaskFilter: Text;
-    FirstLineHasBeenOutput: Boolean;
-    PrintSection: Boolean;
-    CurrReportPageNoCaptionLbl: Label 'Page';
-    JobQuoteCaptLbl: Label 'Project Quote';
-    DescriptionCaptionLbl: Label 'Description';
-    JobTaskNoCaptLbl: Label 'Project Task No.';
-    QuantityLbl: Label 'Quantity';
-    UnitPriceLbl: Label 'Unit Price';
-    TotalPriceLbl: Label 'Total Price';
-    JobTaskTypeLbl: Label 'Project Task Type';
-    NoLbl: Label 'No.';
-    NewTaskGroup: Integer;
-    CurrentIndentation: Integer;
-    TotalLbl: Label 'Total';
-    CompanyLogoPosition: Integer;
-    JobTotalValue: Decimal;
-    CompanyAddr: array[8]of Text[100];
-    BillToAddr: array[8]of Text[100];
-    ShipToAddr: array[8]of Text[100];
-    TotalJobTask: Text[250];
-    TotalJob: Text[250];
-    HeaderJobTaskNo: Text[250];
-    HeaderJobTask: Text[250];
-    CurrencyFormat: Text;
-    PaymentTermsDesc: Text;
-    protected var CompanyInfo: Record "Company Information";
+
+    var
+        JobsSetup: Record "Jobs Setup";
+        FormatAddr: Codeunit "Format Address";
+        JobFilter: Text;
+        JobTaskFilter: Text;
+        FirstLineHasBeenOutput: Boolean;
+        PrintSection: Boolean;
+        CurrReportPageNoCaptionLbl: Label 'Page';
+        JobQuoteCaptLbl: Label 'Project Quote';
+        DescriptionCaptionLbl: Label 'Description';
+        JobTaskNoCaptLbl: Label 'Project Task No.';
+        QuantityLbl: Label 'Quantity';
+        UnitPriceLbl: Label 'Unit Price';
+        TotalPriceLbl: Label 'Total Price';
+        JobTaskTypeLbl: Label 'Project Task Type';
+        NoLbl: Label 'No.';
+        NewTaskGroup: Integer;
+        CurrentIndentation: Integer;
+        TotalLbl: Label 'Total';
+        CompanyLogoPosition: Integer;
+        JobTotalValue: Decimal;
+        CompanyAddr: array[8] of Text[100];
+        BillToAddr: array[8] of Text[100];
+        ShipToAddr: array[8] of Text[100];
+        TotalJobTask: Text[250];
+        TotalJob: Text[250];
+        HeaderJobTaskNo: Text[250];
+        HeaderJobTask: Text[250];
+        CurrencyFormat: Text;
+        PaymentTermsDesc: Text;
+
+    protected var
+        CompanyInfo: Record "Company Information";
 }

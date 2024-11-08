@@ -2,17 +2,17 @@ pageextension 60124 "Purchase Order Ext" extends "Purchase Order"
 {
     layout
     {
-        addafter("Ship-to Contact")
-        {
-            field("Ship-to Phone No."; rec."Ship-to Phone No.")
-            {
-                ApplicationArea = all;
-                caption = 'Phone No.';
-                ToolTip = 'Specifies the phone number of a contact person for the address of the address that you want the items on the purchase document to be shipped to.';
-                Editable = ShipToOptions = ShipToOptions::"Custom Address";
-                Importance = Additional;
-            }
-        }
+        // addafter("Ship-to Contact")
+        // {
+        //     field("Ship-to Phone No."; rec."Ship-to Phone No.")
+        //     {
+        //         ApplicationArea = all;
+        //         caption = 'Phone No.';
+        //         ToolTip = 'Specifies the phone number of a contact person for the address of the address that you want the items on the purchase document to be shipped to.';
+        //         Editable = ShipToOptions = ShipToOptions::"Custom Address";
+        //         Importance = Additional;
+        //     }
+        // }
         addafter("Shipment Method Code")
         {
             field("Shipping Agent Code"; rec."Shipping Agent Code")
