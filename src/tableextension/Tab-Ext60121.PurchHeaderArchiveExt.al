@@ -2,12 +2,6 @@ tableextension 60121 "Purch Header Archive Ext" extends "Purchase Header Archive
 {
     fields
     {
-        field(60100; "Ship-to Phone No."; Text[30])
-        {
-            Caption = 'Ship-to Phone No.';
-            DataClassification = ToBeClassified;
-            Editable = false;
-        }
         field(60101; "BHB Ship-to Phone No."; Text[30])
         {
             Caption = 'BHB Ship-to Phone No.';
