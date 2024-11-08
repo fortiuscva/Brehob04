@@ -4,7 +4,7 @@ report 60106 "Sales Invoice Brehob 2"
     Caption = 'Sales Invoice';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Local/SalesInvoiceBH.rdlc';
+    RDLCLayout = './Src/report/Layout/SalesInvoiceBH.rdlc';
 
     dataset
     {
@@ -23,7 +23,7 @@ report 60106 "Sales Invoice Brehob 2"
 
                 dataitem(PageLoop; "Integer")
                 {
-                    DataItemTableView = SORTING(Number)WHERE(Number=CONST(1));
+                    DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
 
                     column(Logo; CompInfo.Picture)
                     {
@@ -179,7 +179,7 @@ report 60106 "Sales Invoice Brehob 2"
                     dataitem(SalesInvLine; "Sales Invoice Line") //SalesInvLine
                     {
                         DataItemLinkReference = "Sales Invoice Header";
-                        DataItemLink = "Document No."=FIELD("No.");
+                        DataItemLink = "Document No." = FIELD("No.");
                         DataItemTableView = SORTING("Document No.", "Line No.");
 
                         column(AmountExclInvDisc; AmountExclInvDisc)
@@ -202,15 +202,15 @@ report 60106 "Sales Invoice Brehob 2"
                         }
                         column(UnitPriceToPrint; UnitPriceToPrint)
                         {
-                        DecimalPlaces = 2: 5;
+                            DecimalPlaces = 2 : 5;
                         }
                         column(FrtAmt; FrtAmt)
                         {
-                        DecimalPlaces = 2: 5;
+                            DecimalPlaces = 2 : 5;
                         }
                         column(Subtotal; Subtotal)
                         {
-                        DecimalPlaces = 2: 5;
+                            DecimalPlaces = 2 : 5;
                         }
                         column(OLDesc; Description)
                         {
@@ -220,7 +220,7 @@ report 60106 "Sales Invoice Brehob 2"
                         }
                         column(TaxAmount; TaxAmount)
                         {
-                        DecimalPlaces = 2: 5;
+                            DecimalPlaces = 2 : 5;
                         }
                         column(IsFreight; Freight)
                         {
@@ -228,43 +228,46 @@ report 60106 "Sales Invoice Brehob 2"
                         trigger OnPreDataItem() //SalesInvLine
                         begin
                             Clear(AmountExclInvDisc);
-                            NumberOfLines:=Count;
-                            OnLineNumber:=0;
-                            PrintFooter:=false;
+                            NumberOfLines := Count;
+                            OnLineNumber := 0;
+                            PrintFooter := false;
                         end;
+
                         trigger OnAfterGetRecord() //SalesInvLine
                         begin
                             //IF "Amount Including VAT" = 0 then
                             //    CurrReport.skip;
-                            OnLineNumber:=OnLineNumber + 1;
-                            ItemNumberToPrint:="No.";
-                            If "Item Reference No." <> '' then ItemRefNo:="Item Reference No.";
+                            OnLineNumber := OnLineNumber + 1;
+                            ItemNumberToPrint := "No.";
+                            If "Item Reference No." <> '' then ItemRefNo := "Item Reference No.";
                             if Type = Type::" " then begin
-                                ItemNumberToPrint:='';
-                                "Unit of Measure":='';
-                                "Line Amount":=0;
-                                "Inv. Discount Amount":=0;
-                                Quantity:=0;
+                                ItemNumberToPrint := '';
+                                "Unit of Measure" := '';
+                                "Line Amount" := 0;
+                                "Inv. Discount Amount" := 0;
+                                Quantity := 0;
                             end;
-                            AmountExclInvDisc:="Line Amount";
-                            If Freight then FrtAmt:=FrtAmt + "Line Amount";
-                            If Freight = false then Subtotal+=AmountExclInvDisc;
-                            TaxAmount:="Amount Including VAT" - Amount;
-                            if Quantity = 0 then UnitPriceToPrint:=0 // so it won't print
+                            AmountExclInvDisc := "Line Amount";
+                            If Freight then FrtAmt := FrtAmt + "Line Amount";
+                            If Freight = false then Subtotal += AmountExclInvDisc;
+                            TaxAmount := "Amount Including VAT" - Amount;
+                            if Quantity = 0 then
+                                UnitPriceToPrint := 0 // so it won't print
                             else
-                                UnitPriceToPrint:=Round(AmountExclInvDisc / Quantity, 0.00001);
+                                UnitPriceToPrint := Round(AmountExclInvDisc / Quantity, 0.00001);
                             if OnLineNumber = NumberOfLines then begin
-                                PrintFooter:=true;
+                                PrintFooter := true;
                             end;
                         end;
                     }
                 }
                 trigger OnPreDataItem() //CopyLoop
                 begin
-                    NoLoops:=1 + Abs(NoCopies);
-                    if NoLoops <= 0 then NoLoops:=1;
-                    CopyNo:=0;
+                    NoLoops := 1 + Abs(NoCopies);
+                    if NoLoops <= 0 then NoLoops := 1;
+                    CopyNo := 0;
                 end;
+
                 trigger OnAfterGetRecord() //CopyLoop
                 begin
                     if CopyNo = NoLoops then begin
@@ -272,30 +275,35 @@ report 60106 "Sales Invoice Brehob 2"
                         //SalesPrinted.Run("Sales Invoice Header");
                         CurrReport.Break();
                     end;
-                    CopyNo:=CopyNo + 1;
+                    CopyNo := CopyNo + 1;
                     if CopyNo = 1 then // Original
- Clear(CopyTxt)
+                        Clear(CopyTxt)
                     else
-                        CopyTxt:=Text000;
+                        CopyTxt := Text000;
                 end;
             }
             trigger OnAfterGetRecord() //Sales Invoice Header
             begin
-                if PrintCompany then if RespCenter.Get("Responsibility Center")then begin
+                if PrintCompany then
+                    if RespCenter.Get("Responsibility Center") then begin
                         FormatAddress.RespCenter(CompAddr, RespCenter);
-                    //CompInfo."Phone No." := RespCenter."Phone No.";
-                    //CompInfo."Fax No." := RespCenter."Fax No.";
+                        //CompInfo."Phone No." := RespCenter."Phone No.";
+                        //CompInfo."Fax No." := RespCenter."Fax No.";
                     end;
-                if "Salesperson Code" = '' then Clear(SalesPurchPerson)
+                if "Salesperson Code" = '' then
+                    Clear(SalesPurchPerson)
                 else
                     SalesPurchPerson.Get("Salesperson Code");
-                if "Payment Terms Code" = '' then Clear(PaymentTerms)
+                if "Payment Terms Code" = '' then
+                    Clear(PaymentTerms)
                 else
                     PaymentTerms.Get("Payment Terms Code");
-                if "Shipment Method Code" = '' then Clear(ShipmentMethod)
+                if "Shipment Method Code" = '' then
+                    Clear(ShipmentMethod)
                 else
                     ShipmentMethod.Get("Shipment Method Code");
-                IF "Shipping Agent Code" = '' then clear(ShipAgent)
+                IF "Shipping Agent Code" = '' then
+                    clear(ShipAgent)
                 else
                     ShipAgent.get("Shipping Agent Code");
                 FormatAddress.SalesInvSellTo(SellToAddr, "Sales Invoice Header");
@@ -316,14 +324,17 @@ report 60106 "Sales Invoice Brehob 2"
                     end;
                 end;
                 */
-                if "Posting Date" <> 0D then UseDate:="Posting Date"
+                if "Posting Date" <> 0D then
+                    UseDate := "Posting Date"
                 else
-                    UseDate:=WorkDate();
+                    UseDate := WorkDate();
                 calcfields("Job No.");
-                If "Job No." <> '' then If Job.get("Job No.")then begin
+                If "Job No." <> '' then
+                    If Job.get("Job No.") then begin
                         Job.calcfields("Completion Date");
                     end;
             end;
+
             trigger OnPreDataItem() //Sales Invoice Header
             begin
                 if PrintCompany then begin
@@ -368,7 +379,7 @@ report 60106 "Sales Invoice Brehob 2"
 
                         trigger OnValidate()
                         begin
-                            if not ArchiveDocument then LogInteraction:=false;
+                            if not ArchiveDocument then LogInteraction := false;
                         end;
                     }
                     field(LogInteraction; LogInteraction)
@@ -380,7 +391,7 @@ report 60106 "Sales Invoice Brehob 2"
 
                         trigger OnValidate()
                         begin
-                            if LogInteraction then ArchiveDocument:=ArchiveDocumentEnable;
+                            if LogInteraction then ArchiveDocument := ArchiveDocumentEnable;
                         end;
                     }
                     field(HideQtyUOM; HideQtyUOM)
@@ -396,100 +407,103 @@ report 60106 "Sales Invoice Brehob 2"
         }
         trigger OnInit() //Request Page
         begin
-            LogInteractionEnable:=true;
-            ArchiveDocumentEnable:=true;
+            LogInteractionEnable := true;
+            ArchiveDocumentEnable := true;
         end;
+
         trigger OnOpenPage() //Request Page
         begin
-            ArchiveDocument:=ArchiveManagement.SalesDocArchiveGranule();
-            LogInteraction:=SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Purch. Ord.") <> '';
-            ArchiveDocumentEnable:=ArchiveDocument;
-            LogInteractionEnable:=LogInteraction;
+            ArchiveDocument := ArchiveManagement.SalesDocArchiveGranule();
+            LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Purch. Ord.") <> '';
+            ArchiveDocumentEnable := ArchiveDocument;
+            LogInteractionEnable := LogInteraction;
         end;
     }
     labels
     {
-    LblTitle='INVOICE';
-    LblSIHNo='Invoice No.';
-    LblDate='Invoice Date';
-    LblPage='Page:';
-    LblSellTo='Sell To';
-    LblShipTo='Ship To';
-    LblShipDate='Shipment Date';
-    LblSalesPerson='Salesperson';
-    LblSentVia='Sent Via';
-    LblTerms='Terms';
-    LblShipVia='Ship Via';
-    LblFOB='FOB';
-    LblOurItem='Our Item No.';
-    LblYourItem='Your Item No.';
-    LblDesc='Description';
-    LblQty='Quantity';
-    LblUOM='UOM';
-    LblUnitPr='Unit Price';
-    LblExtPr='Ext. Price';
-    LblTotal='Invoice Total';
-    LblShipAcctNo='Ship Via Acct. No.';
-    LblLegal1='Acceptance of Brehob''s products or services shall be deemed to constitute an agreement on the part of the Buyer to the terms and conditions set forth';
-    LblLegal2='on the reverse side of this document which supersedes all previous agreements. The terms and conditions stated herein shall take precedence';
-    LblLegal3='over any other conditions and no contrary, additional or differnt conditions shall be binding on Brehob unless accepted by Brehob in writing.';
-    LblFrtChrg='Freight Charge';
-    LblTax='Sales Tax';
-    LblCC='Brehob will charge a 3% surcharge for all invoices paid by credit card.';
-    LblSubtotal='Subtotal';
-    LblCustPO='Customer P.O. No.';
-    LblEnteredBy='Entered By';
-    LblCustNo='Customer No.';
-    LblCustCode='Cust. Code';
-    LblOrdNo='Order No.';
-    LblJobNo='Project No.';
-    LblCompDate='Compl. Date';
-    LblBillTo='Bill To';
-    LblFreightTotal='Freight Total';
-    LblRemitTo='Remit to:';
-    LblRemit1='P.O. Box 2023';
-    LblRemit2='Indianapolis, IN 46206-2023';
+        LblTitle = 'INVOICE';
+        LblSIHNo = 'Invoice No.';
+        LblDate = 'Invoice Date';
+        LblPage = 'Page:';
+        LblSellTo = 'Sell To';
+        LblShipTo = 'Ship To';
+        LblShipDate = 'Shipment Date';
+        LblSalesPerson = 'Salesperson';
+        LblSentVia = 'Sent Via';
+        LblTerms = 'Terms';
+        LblShipVia = 'Ship Via';
+        LblFOB = 'FOB';
+        LblOurItem = 'Our Item No.';
+        LblYourItem = 'Your Item No.';
+        LblDesc = 'Description';
+        LblQty = 'Quantity';
+        LblUOM = 'UOM';
+        LblUnitPr = 'Unit Price';
+        LblExtPr = 'Ext. Price';
+        LblTotal = 'Invoice Total';
+        LblShipAcctNo = 'Ship Via Acct. No.';
+        LblLegal1 = 'Acceptance of Brehob''s products or services shall be deemed to constitute an agreement on the part of the Buyer to the terms and conditions set forth';
+        LblLegal2 = 'on the reverse side of this document which supersedes all previous agreements. The terms and conditions stated herein shall take precedence';
+        LblLegal3 = 'over any other conditions and no contrary, additional or differnt conditions shall be binding on Brehob unless accepted by Brehob in writing.';
+        LblFrtChrg = 'Freight Charge';
+        LblTax = 'Sales Tax';
+        LblCC = 'Brehob will charge a 3% surcharge for all invoices paid by credit card.';
+        LblSubtotal = 'Subtotal';
+        LblCustPO = 'Customer P.O. No.';
+        LblEnteredBy = 'Entered By';
+        LblCustNo = 'Customer No.';
+        LblCustCode = 'Cust. Code';
+        LblOrdNo = 'Order No.';
+        LblJobNo = 'Project No.';
+        LblCompDate = 'Compl. Date';
+        LblBillTo = 'Bill To';
+        LblFreightTotal = 'Freight Total';
+        LblRemitTo = 'Remit to:';
+        LblRemit1 = 'P.O. Box 2023';
+        LblRemit2 = 'Indianapolis, IN 46206-2023';
     }
     trigger OnPreReport() //Report
     begin
         CompInfo.Get;
     end;
-    var UnitPriceToPrint: Decimal;
-    AmountExclInvDisc: Decimal;
-    ShipmentMethod: Record "Shipment Method";
-    ShipAgent: record "Shipping Agent";
-    PaymentTerms: Record "Payment Terms";
-    SalesPurchPerson: Record "Salesperson/Purchaser";
-    CompInfo: Record "Company Information";
-    RespCenter: record "Responsibility Center";
-    Res: record Resource;
-    Job: record Job;
-    CompAddr: array[9]of Text[100];
-    BillToAddr: array[8]of Text[100];
-    SellToAddr: array[8]of Text[100];
-    ShipToAddr: array[8]of Text[100];
-    CopyTxt: Text[10];
-    ItemNumberToPrint: Text[50];
-    ItemRefNo: text[50];
-    PrintCompany: Boolean;
-    PrintFooter: Boolean;
-    NoCopies: Integer;
-    NoLoops: Integer;
-    CopyNo: Integer;
-    NumberOfLines: Integer;
-    OnLineNumber: Integer;
-    FormatAddress: Codeunit "Format Address 2";
-    SalesTaxCalc: Codeunit "Sales Tax Calculate";
-    ArchiveManagement: Codeunit ArchiveManagement;
-    SegManagement: Codeunit SegManagement;
-    ArchiveDocument: Boolean;
-    LogInteraction: Boolean;
-    UseDate: Date;
-    Text000: Label 'COPY';
-    ArchiveDocumentEnable: Boolean;
-    LogInteractionEnable: Boolean;
-    FrtAmt: decimal;
-    TaxAmount: decimal;
-    Subtotal: decimal;
-    HideQtyUOM: Boolean;
+
+    var
+        UnitPriceToPrint: Decimal;
+        AmountExclInvDisc: Decimal;
+        ShipmentMethod: Record "Shipment Method";
+        ShipAgent: record "Shipping Agent";
+        PaymentTerms: Record "Payment Terms";
+        SalesPurchPerson: Record "Salesperson/Purchaser";
+        CompInfo: Record "Company Information";
+        RespCenter: record "Responsibility Center";
+        Res: record Resource;
+        Job: record Job;
+        CompAddr: array[9] of Text[100];
+        BillToAddr: array[8] of Text[100];
+        SellToAddr: array[8] of Text[100];
+        ShipToAddr: array[8] of Text[100];
+        CopyTxt: Text[10];
+        ItemNumberToPrint: Text[50];
+        ItemRefNo: text[50];
+        PrintCompany: Boolean;
+        PrintFooter: Boolean;
+        NoCopies: Integer;
+        NoLoops: Integer;
+        CopyNo: Integer;
+        NumberOfLines: Integer;
+        OnLineNumber: Integer;
+        FormatAddress: Codeunit "Format Address 2";
+        SalesTaxCalc: Codeunit "Sales Tax Calculate";
+        ArchiveManagement: Codeunit ArchiveManagement;
+        SegManagement: Codeunit SegManagement;
+        ArchiveDocument: Boolean;
+        LogInteraction: Boolean;
+        UseDate: Date;
+        Text000: Label 'COPY';
+        ArchiveDocumentEnable: Boolean;
+        LogInteractionEnable: Boolean;
+        FrtAmt: decimal;
+        TaxAmount: decimal;
+        Subtotal: decimal;
+        HideQtyUOM: Boolean;
 }
