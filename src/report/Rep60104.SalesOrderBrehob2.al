@@ -4,7 +4,7 @@ report 60104 "Sales Order Brehob 2"
     Caption = 'Sales Order Confirmation';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Src/report/Layout/SalesOrderBH.rdlc';
+    RDLCLayout = './Local/SalesOrderBH.rdlc';
 
     dataset
     {
