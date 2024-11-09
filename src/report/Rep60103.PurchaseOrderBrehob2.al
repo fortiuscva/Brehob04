@@ -4,7 +4,7 @@ report 60103 "Purchase Order Brehob 2"
     Caption = 'Purchase Order';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Src/report/Layout/PurchaseOrderBH.rdlc';
+    RDLCLayout = './Local/PurchaseOrderBH.rdlc';
 
     dataset
     {

@@ -4,7 +4,7 @@ report 60108 "Sales Cr. Memo Brehob 2"
     Caption = 'Sales Credit Memo';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Src/report/Layout/SalesCrMemoBH.rdlc';
+    RDLCLayout = './Local/SalesCrMemoBH.rdlc';
 
     dataset
     {

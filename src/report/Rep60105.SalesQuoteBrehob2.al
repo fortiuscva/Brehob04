@@ -4,7 +4,7 @@ report 60105 "Sales Quote Brehob 2"
     Caption = 'Sales Quote';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Src/report/Layout/SalesQuoteBH.rdlc';
+    RDLCLayout = './Local/SalesQuoteBH.rdlc';
 
     dataset
     {
