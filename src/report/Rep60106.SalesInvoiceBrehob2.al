@@ -4,7 +4,7 @@ report 60106 "Sales Invoice Brehob 2"
     Caption = 'Sales Invoice';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Src/report/Layout/SalesInvoiceBH.rdlc';
+    RDLCLayout = './Local/SalesInvoiceBH.rdlc';
 
     dataset
     {
@@ -402,6 +402,7 @@ report 60106 "Sales Invoice Brehob 2"
                 }
             }
         }
+
         actions
         {
         }
@@ -418,7 +419,9 @@ report 60106 "Sales Invoice Brehob 2"
             ArchiveDocumentEnable := ArchiveDocument;
             LogInteractionEnable := LogInteraction;
         end;
+
     }
+
     labels
     {
         LblTitle = 'INVOICE';

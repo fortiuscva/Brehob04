@@ -1,7 +1,7 @@
 report 60107 "Return Authorization BH"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Src/report/Layout/ReturnAuthorizationBH.rdlc';
+    RDLCLayout = './Local/ReturnAuthorizationBH.rdlc';
     ApplicationArea = Basic, Suite;
     Caption = 'Return Authorization';
     UsageCategory = Documents;

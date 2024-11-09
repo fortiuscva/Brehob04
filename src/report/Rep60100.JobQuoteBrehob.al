@@ -292,7 +292,7 @@ report 60100 "Job Quote - Brehob"
         layout("JobQuoteBH.rdlc")
         {
             Type = RDLC;
-            LayoutFile = './Src/report/Layout/JobQuoteBH.rdlc';
+            LayoutFile = './Local/JobQuoteBH.rdlc';
             Caption = 'Project Quote (RDLC)';
             Summary = 'The Project Quote (RDLC) provides a detailed layout.';
         }
