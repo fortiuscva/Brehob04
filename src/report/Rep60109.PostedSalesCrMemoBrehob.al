@@ -1,10 +1,10 @@
-report 60109 "Sales Credit Memo Brehob"
+report 60109 "Posted Sales Cr. Memo Brehob"
 {
     ApplicationArea = All;
     Caption = 'Sales Credit Memo';
     UsageCategory = Documents;
     DefaultLayout = RDLC;
-    RDLCLayout = './Local/SalesCreditMemoBH.rdlc';
+    RDLCLayout = './Local/PostedSalesCrMemoBH.rdlc';
 
     dataset
     {
