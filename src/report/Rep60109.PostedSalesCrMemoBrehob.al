@@ -58,6 +58,30 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                     column(CopyTxt; CopyTxt)
                     {
                     }
+                    column(BillToAddr1; BillToAddr[1])
+                    {
+                    }
+                    column(BillToAddr2; BillToAddr[2])
+                    {
+                    }
+                    column(BillToAddr3; BillToAddr[3])
+                    {
+                    }
+                    column(BillToAddr4; BillToAddr[4])
+                    {
+                    }
+                    column(BillToAddr5; BillToAddr[5])
+                    {
+                    }
+                    column(BillToAddr6; BillToAddr[6])
+                    {
+                    }
+                    column(BillToAddr7; BillToAddr[7])
+                    {
+                    }
+                    column(BillToAddr8; BillToAddr[8])
+                    {
+                    }
                     column(SellToAddr1; SellToAddr[1])
                     {
                     }
@@ -82,7 +106,7 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                     column(SellToAddr8; SellToAddr[8])
                     {
                     }
-                    column(SHExpShipDt; "Sales Cr.Memo Header"."Shipment Date")
+                    column(ExpShipDt; "Sales Cr.Memo Header"."Shipment Date")
                     {
                     }
                     column(ShipToAddr1; ShipToAddr[1])
@@ -112,7 +136,7 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                     column(SHSellToCustNo; "Sales Cr.Memo Header"."Sell-to Customer No.")
                     {
                     }
-                    column(SHExtDocNo; "Sales Cr.Memo Header"."External Document No.")
+                    column(ExtDocNo; "Sales Cr.Memo Header"."External Document No.")
                     {
                     }
                     column(PurchPersName; SalesPurchPerson.Name)
@@ -138,6 +162,15 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                     {
                     }
                     column(CopyNo; CopyNo)
+                    {
+                    }
+                    column(BillToCustNo; "Sales Cr.Memo Header"."Bill-to Customer No.")
+                    {
+                    }
+                    column(JobNo; "Sales Cr.Memo Header"."Job No.")
+                    {
+                    }
+                    column(OrderNo; "Sales Cr.Memo Header"."Pre-Assigned No.")
                     {
                     }
                     /*
@@ -173,10 +206,25 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                         {
                             DecimalPlaces = 2 : 5;
                         }
+                        column(FrtAmt; FrtAmt)
+                        {
+                            DecimalPlaces = 2 : 5;
+                        }
+                        column(Subtotal; Subtotal)
+                        {
+                            DecimalPlaces = 2 : 5;
+                        }
                         column(OLDesc; Description)
                         {
                         }
                         column(PrintFooter; PrintFooter)
+                        {
+                        }
+                        column(TaxAmount; TaxAmount)
+                        {
+                            DecimalPlaces = 2 : 5;
+                        }
+                        column(IsFreight; Freight)
                         {
                         }
                         trigger OnPreDataItem() //PurchLine
@@ -200,6 +248,9 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                                 Quantity := 0;
                             end;
                             AmountExclInvDisc := "Line Amount";
+                            If Freight then FrtAmt := FrtAmt + "Line Amount";
+                            If Freight = false then Subtotal += AmountExclInvDisc;
+                            TaxAmount := "Amount Including VAT" - Amount;
                             if Quantity = 0 then
                                 UnitPriceToPrint := 0 // so it won't print
                             else
@@ -256,6 +307,8 @@ report 60109 "Posted Sales Cr. Memo Brehob"
                     ShipAgent.get("Shipping Agent Code");
                 FormatAddress.SalesCrMemoSellTo(SellToAddr, "Sales Cr.Memo Header");
                 FormatAddress.SalesCrMemoShipTo(ShipToAddr, ShipToAddr, "Sales Cr.Memo Header");
+                Clear("Bill-to Contact");
+                FormatAddress.SalesCrMemoBillTo(BillToAddr, "Sales Cr.Memo Header");
                 if not CurrReport.Preview then begin
                     if LogInteraction then begin
                         SegManagement.LogDocument(6, "No.", 0, 0, DATABASE::Customer, "Sell-to Customer No.", "Salesperson Code", "Campaign No.", "Posting Description", '');
@@ -331,7 +384,7 @@ report 60109 "Posted Sales Cr. Memo Brehob"
     labels
     {
         LblTitle = 'SALES CREDIT MEMO';
-        LblSONo = 'Credit Memo No.';
+        LblSCMNo = 'Credit Memo No.';
         LblDate = 'Cr. Memo Date';
         LblPage = 'Page:';
         LblSellTo = 'Sell To';
@@ -355,8 +408,21 @@ report 60109 "Posted Sales Cr. Memo Brehob"
         LblLegal2 = 'supersede all previous agreements. The terms and conditions stated herein shall take precedence over any other conditions and no contrary, additional or differnt conditions shall be binding on Brehob';
         LblLegal3 = 'unless accepted by Brehob in writing.';
         LblLegal4 = 'Past due invoice are subject to a service charge of 1.5% per month. Our permission must be obtained before rerturning merchandise to us.';
+        LblFrtChrg = 'Freight Charge';
+        LblTax = 'Sales Tax';
         LblQtEndDate = 'Quote Expiration Date';
+        LblSubtotal = 'Subtotal';
+        LblCustPO = 'Customer P.O. No.';
         LblEnteredBy = 'Entered By';
+        LblCustNo = 'Customer No.';
+        LblCustCode = 'Cust. Code';
+        LblOrdNo = 'Order No.';
+        LblJobNo = 'Project No.';
+        LblBillTo = 'Bill To';
+        LblFreightTotal = 'Freight Total';
+        LblRemitTo = 'Remit to:';
+        LblRemit1 = 'P.O. Box 2023';
+        LblRemit2 = 'Indianapolis, IN 46206-2023';
     }
     trigger OnPreReport() //Report
     begin
@@ -373,6 +439,7 @@ report 60109 "Posted Sales Cr. Memo Brehob"
         CompInfo: Record "Company Information";
         RespCenter: record "Responsibility Center";
         CompAddr: array[9] of Text[100];
+        BillToAddr: array[8] of Text[100];
         SellToAddr: array[8] of Text[100];
         ShipToAddr: array[8] of Text[100];
         CopyTxt: Text[10];
@@ -393,4 +460,7 @@ report 60109 "Posted Sales Cr. Memo Brehob"
         UseDate: Date;
         Text000: Label 'COPY';
         LogInteractionEnable: Boolean;
+        FrtAmt: decimal;
+        TaxAmount: decimal;
+        Subtotal: decimal;
 }

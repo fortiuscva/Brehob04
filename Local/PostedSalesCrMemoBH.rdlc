@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-10-24T17:21:48.7934171Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-11-21T21:20:01.2922111Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -33,10 +33,10 @@
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.5in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.3in</Width>
+                  <Width>2.32014in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.7in</Width>
@@ -531,15 +531,199 @@
                             <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <ColSpan>7</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="FrtAmtTextBox">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Last(Fields!FrtAmt.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox60">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox60</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TaxAmountTextBox">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!TaxAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SubtotalTextBox">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Last(Fields!Subtotal.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SumOfAll">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!AmountExclInvDisc.Value) + Sum(Fields!TaxAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Subtotal">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!AmountExclInvDisc.Value)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
@@ -586,7 +770,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.02778in</Top>
             <Height>0.65in</Height>
-            <Width>8in</Width>
+            <Width>7.52014in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -594,17 +778,17 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.88078in</Height>
+        <Height>1.12036in</Height>
         <Style />
       </Body>
-      <Width>8in</Width>
+      <Width>7.5309in</Width>
       <Page>
         <PageHeader>
           <Height>3.30362in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Image Name="Logo">
+            <Image Name="Logo2">
               <Source>Database</Source>
               <Value>=Fields!Logo.Value</Value>
               <MIMEType>image/jpeg</MIMEType>
@@ -617,7 +801,7 @@
                 </Border>
               </Style>
             </Image>
-            <Textbox Name="CompAddr2TextBox">
+            <Textbox Name="CompAddr2TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -646,7 +830,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="CompAddr3TextBox">
+            <Textbox Name="CompAddr3TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -675,7 +859,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblTitle">
+            <Textbox Name="LblTitle2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -693,9 +877,9 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Left>4.79375in</Left>
+              <Left>4.33125in</Left>
               <Height>0.25in</Height>
-              <Width>3.175in</Width>
+              <Width>3.19965in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -705,7 +889,7 @@
                 <PaddingRight>5pt</PaddingRight>
               </Style>
             </Textbox>
-            <Textbox Name="CompAddr4TextBox">
+            <Textbox Name="CompAddr4TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -734,7 +918,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="SHNoTextBox">
+            <Textbox Name="SIHNoTextBox">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -753,9 +937,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.25in</Top>
-              <Left>6.50764in</Left>
+              <Left>6.04514in</Left>
               <Height>0.25in</Height>
-              <Width>1.46111in</Width>
+              <Width>1.48576in</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -765,13 +949,13 @@
                 <PaddingLeft>5pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="SellToAddr1TextBox">
+            <Textbox Name="SellToAddr1TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!SellToAddr1.Value</Value>
+                      <Value>=Fields!BillToAddr1.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -782,10 +966,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.57861in</Top>
-              <Left>1.15639in</Left>
+              <Top>1.41472in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>2.98972in</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -794,13 +978,13 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="LblSellToTextBox">
+            <Textbox Name="LblSellToTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!LblSellTo.Value</Value>
+                      <Value>=Parameters!LblBillTo.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -812,10 +996,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.41472in</Top>
-              <Left>1.15639in</Left>
+              <Top>1.25083in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>2.98972in</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -824,13 +1008,13 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="SellToAddr2TextBox">
+            <Textbox Name="SellToAddr2TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!SellToAddr2.Value</Value>
+                      <Value>=Fields!BillToAddr2.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -841,10 +1025,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.71917in</Top>
-              <Left>1.15639in</Left>
+              <Top>1.55528in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>2.98972in</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
@@ -853,13 +1037,13 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="SellToAddr3TextBox">
+            <Textbox Name="SellToAddr3TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!SellToAddr3.Value</Value>
+                      <Value>=Fields!BillToAddr3.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -870,10 +1054,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.86917in</Top>
-              <Left>1.15639in</Left>
+              <Top>1.70528in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>2.98972in</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>
@@ -882,13 +1066,42 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="SellToAddr4TextBox">
+            <Textbox Name="SellToAddr4TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!SellToAddr4.Value</Value>
+                      <Value>=Fields!BillToAddr4.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.84584in</Top>
+              <Left>0in</Left>
+              <Height>0.15in</Height>
+              <Width>2.98972in</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="SellToAddr5TextBox2">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!BillToAddr5.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -900,38 +1113,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.00973in</Top>
-              <Left>1.15639in</Left>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="SellToAddr5TextBox">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!SellToAddr5.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>2.17362in</Top>
-              <Left>1.15639in</Left>
-              <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>2.98972in</Width>
               <ZIndex>11</ZIndex>
               <Style>
                 <Border>
@@ -940,7 +1124,7 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddr1TextBox">
+            <Textbox Name="ShipToAddr1TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -957,10 +1141,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.57861in</Top>
-              <Left>4.0118in</Left>
+              <Top>1.41472in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>3.02222in</Width>
               <ZIndex>12</ZIndex>
               <Style>
                 <Border>
@@ -969,7 +1153,7 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="LblShipToTextBox">
+            <Textbox Name="LblShipToTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -987,10 +1171,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.41472in</Top>
-              <Left>4.0118in</Left>
+              <Top>1.25083in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>3.02222in</Width>
               <ZIndex>13</ZIndex>
               <Style>
                 <Border>
@@ -999,7 +1183,7 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddr2TextBox">
+            <Textbox Name="ShipToAddr2TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1016,10 +1200,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.71917in</Top>
-              <Left>4.0118in</Left>
+              <Top>1.55528in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>3.02222in</Width>
               <ZIndex>14</ZIndex>
               <Style>
                 <Border>
@@ -1028,7 +1212,7 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddr3TextBox">
+            <Textbox Name="ShipToAddr3TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1045,10 +1229,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.86917in</Top>
-              <Left>4.0118in</Left>
+              <Top>1.70528in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>3.02222in</Width>
               <ZIndex>15</ZIndex>
               <Style>
                 <Border>
@@ -1057,7 +1241,7 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddr4TextBox">
+            <Textbox Name="ShipToAddr4TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1074,10 +1258,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.00973in</Top>
-              <Left>4.0118in</Left>
+              <Top>1.84584in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>3.02222in</Width>
               <ZIndex>16</ZIndex>
               <Style>
                 <Border>
@@ -1086,7 +1270,7 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddr5TextBox">
+            <Textbox Name="ShipToAddr5TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1103,10 +1287,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.17362in</Top>
-              <Left>4.0118in</Left>
+              <Top>2.00973in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
-              <Width>1.82292in</Width>
+              <Width>3.02222in</Width>
               <ZIndex>17</ZIndex>
               <Style>
                 <Border>
@@ -1115,13 +1299,13 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="SHOrdDateTextBox">
+            <Textbox Name="SHOrdDateTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!PostingDate.Value, "DataSet_Result")</Value>
+                      <Value>=Fields!PostingDate.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <Format>MM/dd/yy</Format>
@@ -1134,9 +1318,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.51111in</Top>
-              <Left>6.50764in</Left>
+              <Left>6.04514in</Left>
               <Height>0.25in</Height>
-              <Width>1.45972in</Width>
+              <Width>1.48576in</Width>
               <ZIndex>18</ZIndex>
               <Style>
                 <Border>
@@ -1146,7 +1330,7 @@
                 <PaddingLeft>5pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblShipDateTextBox">
+            <Textbox Name="LblShipDateTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1165,7 +1349,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.4675in</Top>
-              <Left>0.2175in</Left>
+              <Left>0in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>19</ZIndex>
@@ -1177,7 +1361,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblSalespersonTextBox">
+            <Textbox Name="LblSalespersonTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1196,7 +1380,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.62028in</Top>
-              <Left>0.2175in</Left>
+              <Left>0in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>20</ZIndex>
@@ -1208,13 +1392,13 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblSentViaTextBox">
+            <Textbox Name="LblSentViaTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!LblSentVia.Value</Value>
+                      <Value>=Parameters!LblCustPO.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1227,7 +1411,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.77028in</Top>
-              <Left>0.2175in</Left>
+              <Left>0in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>21</ZIndex>
@@ -1239,7 +1423,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblTermsTextBox">
+            <Textbox Name="LblTermsTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1258,7 +1442,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.92028in</Top>
-              <Left>0.2175in</Left>
+              <Left>0in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>22</ZIndex>
@@ -1270,13 +1454,13 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="SHExpShipDtTextBox">
+            <Textbox Name="SIHExpShipDtTextBox">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!SHExpShipDt.Value, "DataSet_Result")</Value>
+                      <Value>=Fields!ExpShipDt.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <Format>MM/dd/yy</Format>
@@ -1289,7 +1473,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.4675in</Top>
-              <Left>1.15639in</Left>
+              <Left>0.90639in</Left>
               <Height>0.15in</Height>
               <Width>2.08333in</Width>
               <ZIndex>23</ZIndex>
@@ -1301,7 +1485,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="PurchPersNameTextBox">
+            <Textbox Name="PurchPersNameTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1319,7 +1503,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.61889in</Top>
-              <Left>1.15639in</Left>
+              <Left>0.90639in</Left>
               <Height>0.15in</Height>
               <Width>2.08333in</Width>
               <ZIndex>24</ZIndex>
@@ -1331,13 +1515,13 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="PurchPersName2TextBox">
+            <Textbox Name="PurchPersName2TextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Constant" />
+                      <Value>=Fields!ExtDocNo.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -1349,7 +1533,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.76889in</Top>
-              <Left>1.15639in</Left>
+              <Left>0.90639in</Left>
               <Height>0.15in</Height>
               <Width>2.08333in</Width>
               <ZIndex>25</ZIndex>
@@ -1361,7 +1545,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="PayTermsDescTextBox">
+            <Textbox Name="PayTermsDescTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1379,7 +1563,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.92028in</Top>
-              <Left>1.15639in</Left>
+              <Left>0.90639in</Left>
               <Height>0.15in</Height>
               <Width>2.08333in</Width>
               <ZIndex>26</ZIndex>
@@ -1391,7 +1575,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblShipViaTextBox">
+            <Textbox Name="LblShipViaTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1409,11 +1593,14 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.46611in</Top>
-              <Left>3.67659in</Left>
+              <Top>2.61472in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>27</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Fields!ShipAgentName.Value = "", True, False)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1422,7 +1609,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblFOBTextBox">
+            <Textbox Name="LblFOBTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1440,11 +1627,14 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.77167in</Top>
-              <Left>3.67659in</Left>
+              <Top>2.92028in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>28</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Fields!ShipmentMethDesc.Value = "", True, False)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1453,7 +1643,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="ShipAgentNameTextBox">
+            <Textbox Name="ShipAgentNameTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1471,8 +1661,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.46611in</Top>
-              <Left>4.61548in</Left>
+              <Top>2.61472in</Top>
+              <Left>4.77798in</Left>
               <Height>0.15in</Height>
               <Width>2.08333in</Width>
               <ZIndex>29</ZIndex>
@@ -1484,7 +1674,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="ShipmentMethDescTextBox">
+            <Textbox Name="ShipmentMethDescTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1501,10 +1691,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.77028in</Top>
-              <Left>4.60738in</Left>
+              <Top>2.91889in</Top>
+              <Left>4.76988in</Left>
               <Height>0.15in</Height>
-              <Width>2.08333in</Width>
+              <Width>2.09143in</Width>
               <ZIndex>30</ZIndex>
               <Style>
                 <Border>
@@ -1514,13 +1704,13 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblSONo">
+            <Textbox Name="LblSIHNo">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!LblSONo.Value</Value>
+                      <Value>=Parameters!LblSCMNo.Value</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1533,9 +1723,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.25in</Top>
-              <Left>4.79375in</Left>
+              <Left>4.57292in</Left>
               <Height>0.25in</Height>
-              <Width>1.7in</Width>
+              <Width>1.45833in</Width>
               <ZIndex>31</ZIndex>
               <Style>
                 <Border>
@@ -1545,7 +1735,7 @@
                 <PaddingRight>2pt</PaddingRight>
               </Style>
             </Textbox>
-            <Textbox Name="LblDate">
+            <Textbox Name="LblDate2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1564,9 +1754,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.51111in</Top>
-              <Left>5.49375in</Left>
+              <Left>4.57292in</Left>
               <Height>0.25in</Height>
-              <Width>1in</Width>
+              <Width>1.45833in</Width>
               <ZIndex>32</ZIndex>
               <Style>
                 <Border>
@@ -1576,7 +1766,7 @@
                 <PaddingRight>2pt</PaddingRight>
               </Style>
             </Textbox>
-            <Textbox Name="PageNumberTextBox">
+            <Textbox Name="PageNumberTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1593,10 +1783,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.83055in</Top>
-              <Left>6.50625in</Left>
+              <Top>0.76389in</Top>
+              <Left>6.04514in</Left>
               <Height>0.25in</Height>
-              <Width>1.46111in</Width>
+              <Width>1.48576in</Width>
               <ZIndex>33</ZIndex>
               <Style>
                 <Border>
@@ -1606,7 +1796,7 @@
                 <PaddingLeft>5pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="LblPage">
+            <Textbox Name="LblPage2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1623,10 +1813,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.83055in</Top>
-              <Left>5.49236in</Left>
+              <Top>0.76389in</Top>
+              <Left>4.57292in</Left>
               <Height>0.25in</Height>
-              <Width>1in</Width>
+              <Width>1.45833in</Width>
               <ZIndex>34</ZIndex>
               <Style>
                 <Border>
@@ -1636,7 +1826,7 @@
                 <PaddingRight>2pt</PaddingRight>
               </Style>
             </Textbox>
-            <Textbox Name="LblShipAcctNoTextBox">
+            <Textbox Name="LblShipAcctNoTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1654,11 +1844,14 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.61889in</Top>
-              <Left>3.67659in</Left>
+              <Top>2.7675in</Top>
+              <Left>3.83909in</Left>
               <Height>0.15in</Height>
               <Width>0.93195in</Width>
               <ZIndex>35</ZIndex>
+              <Visibility>
+                <Hidden>=iif(Fields!ShipAgentAcctNo.Value = "", True, False)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1667,7 +1860,7 @@
                 <PaddingLeft>2pt</PaddingLeft>
               </Style>
             </Textbox>
-            <Textbox Name="ShipAgentAcctNoTextBox">
+            <Textbox Name="ShipAgentAcctNoTextBox2">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1685,11 +1878,287 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.61889in</Top>
-              <Left>4.61548in</Left>
+              <Top>2.7675in</Top>
+              <Left>4.77798in</Left>
               <Height>0.15in</Height>
               <Width>2.08333in</Width>
               <ZIndex>36</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblOrderNo">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblOrdNo.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.4675in</Top>
+              <Left>3.83909in</Left>
+              <Height>0.15in</Height>
+              <Width>0.93195in</Width>
+              <ZIndex>37</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="OrderNo">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!OrderNo.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Format>yy/MM/dd</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.4675in</Top>
+              <Left>4.77798in</Left>
+              <Height>0.15in</Height>
+              <Width>2.08333in</Width>
+              <ZIndex>38</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="RemitToLabel">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblRemitTo.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.00833in</Top>
+              <Left>4.92125cm</Left>
+              <Height>0.15in</Height>
+              <Width>1.9375in</Width>
+              <ZIndex>39</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="RemitToAddress1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblRemit1.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.17222in</Top>
+              <Left>4.92125cm</Left>
+              <Height>0.15in</Height>
+              <Width>1.9375in</Width>
+              <ZIndex>40</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="RemitToAddress2">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblRemit2.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.33611in</Top>
+              <Left>4.92125cm</Left>
+              <Height>0.15in</Height>
+              <Width>1.9375in</Width>
+              <ZIndex>41</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblJobNo">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblJobNo.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.3175in</Top>
+              <Left>3.83909in</Left>
+              <Height>0.15in</Height>
+              <Width>0.93195in</Width>
+              <ZIndex>42</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="JobNo">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!JobNo.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Format>yy/MM/dd</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.3175in</Top>
+              <Left>4.77798in</Left>
+              <Height>0.15in</Height>
+              <Width>2.08333in</Width>
+              <ZIndex>43</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblCustCode">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblCustCode.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.3175in</Top>
+              <Left>0in</Left>
+              <Height>0.15in</Height>
+              <Width>0.93195in</Width>
+              <ZIndex>44</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="CustCode">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!BillToCustNo.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Format>MM/dd/yy</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.3175in</Top>
+              <Left>0.90639in</Left>
+              <Height>0.15in</Height>
+              <Width>2.08333in</Width>
+              <ZIndex>45</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1702,73 +2171,10 @@
           <Style />
         </PageHeader>
         <PageFooter>
-          <Height>1.49817in</Height>
+          <Height>1.49908in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="AmountExclInvDisc2">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=ReportItems!GrandTotal.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <Format>#,0.00;(#,0.00)</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>AmountExclInvDisc</rd:DefaultName>
-              <Top>0.01389in</Top>
-              <Left>7.09375in</Left>
-              <Height>0.25in</Height>
-              <Width>0.9in</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingRight>2pt</PaddingRight>
-              </Style>
-            </Textbox>
-            <Textbox Name="LblTotal">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!LblTotal.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.01389in</Top>
-              <Left>6.09375in</Left>
-              <Height>0.25in</Height>
-              <Width>1in</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingRight>6pt</PaddingRight>
-              </Style>
-            </Textbox>
             <Textbox Name="Textbox1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -1787,11 +2193,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.4081in</Top>
-              <Left>0.03125in</Left>
+              <Top>0.7831in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>7.9625in</Width>
-              <ZIndex>2</ZIndex>
+              <Width>7.52292in</Width>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -1821,11 +2226,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.67408in</Top>
-              <Left>0.02952in</Left>
+              <Top>1.04908in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>7.97048in</Width>
-              <ZIndex>3</ZIndex>
+              <Width>7.5309in</Width>
+              <ZIndex>1</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -1855,11 +2260,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.82408in</Top>
-              <Left>0.02952in</Left>
+              <Top>1.19908in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>7.97048in</Width>
-              <ZIndex>4</ZIndex>
+              <Width>7.5309in</Width>
+              <ZIndex>2</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -1889,11 +2294,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.97408in</Top>
-              <Left>0.02952in</Left>
+              <Top>1.34908in</Top>
+              <Left>0in</Left>
               <Height>0.15in</Height>
-              <Width>7.97048in</Width>
-              <ZIndex>5</ZIndex>
+              <Width>7.5309in</Width>
+              <ZIndex>3</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -1903,6 +2308,258 @@
                 </Border>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountExclInvDisc2">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!SubtotalTextBox.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>#,0.00;(#,0.00)</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountExclInvDisc</rd:DefaultName>
+              <Top>0in</Top>
+              <Left>6.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>0.90278in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblTotal">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblSubtotal.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0in</Top>
+              <Left>5.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>1in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>6pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountExclInvDisc3">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!FrtAmtTextBox.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Format>#,0.00;(#,0.00)</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountExclInvDisc</rd:DefaultName>
+              <Top>0.15972in</Top>
+              <Left>6.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>0.9in</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblTotal2">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblFreightTotal.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.15972in</Top>
+              <Left>5.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>1in</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>6pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountExclInvDisc4">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!SumOfAll.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>#,0.00;(#,0.00)</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountExclInvDisc</rd:DefaultName>
+              <Top>0.45972in</Top>
+              <Left>6.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>0.9in</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblTotal3">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblTotal.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.45972in</Top>
+              <Left>5.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>1in</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>6pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblTotal4">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!LblTax.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.30972in</Top>
+              <Left>5.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>1in</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>6pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountExclInvDisc5">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!TaxAmountTextBox.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Format>#,0.00;(#,0.00)</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountExclInvDisc</rd:DefaultName>
+              <Top>0.30972in</Top>
+              <Left>6.62014in</Left>
+              <Height>0.15in</Height>
+              <Width>0.9in</Width>
+              <ZIndex>11</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingRight>2pt</PaddingRight>
               </Style>
             </Textbox>
           </ReportItems>
@@ -1926,14 +2583,14 @@
       </DefaultValue>
       <Prompt>LblTitle</Prompt>
     </ReportParameter>
-    <ReportParameter Name="LblSONo">
+    <ReportParameter Name="LblSCMNo">
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>LblSONo</Value>
+          <Value>LblSCMNo</Value>
         </Values>
       </DefaultValue>
-      <Prompt>LblSONo</Prompt>
+      <Prompt>LblSCMNo</Prompt>
     </ReportParameter>
     <ReportParameter Name="LblDate">
       <DataType>String</DataType>
@@ -2142,6 +2799,24 @@
       </DefaultValue>
       <Prompt>LblLegal4</Prompt>
     </ReportParameter>
+    <ReportParameter Name="LblFrtChrg">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblFrtChrg</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblFrtChrg</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblTax">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblTax</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblTax</Prompt>
+    </ReportParameter>
     <ReportParameter Name="LblQtEndDate">
       <DataType>String</DataType>
       <DefaultValue>
@@ -2150,6 +2825,24 @@
         </Values>
       </DefaultValue>
       <Prompt>LblQtEndDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblSubtotal">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblSubtotal</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblSubtotal</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblCustPO">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCustPO</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCustPO</Prompt>
     </ReportParameter>
     <ReportParameter Name="LblEnteredBy">
       <DataType>String</DataType>
@@ -2160,11 +2853,92 @@
       </DefaultValue>
       <Prompt>LblEnteredBy</Prompt>
     </ReportParameter>
+    <ReportParameter Name="LblCustNo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCustNo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCustNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblCustCode">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblCustCode</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblCustCode</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblOrdNo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblOrdNo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblOrdNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblJobNo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblJobNo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblJobNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblBillTo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblBillTo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblBillTo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblFreightTotal">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblFreightTotal</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblFreightTotal</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblRemitTo">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblRemitTo</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblRemitTo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblRemit1">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblRemit1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblRemit1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="LblRemit2">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>LblRemit2</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>LblRemit2</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>27</NumberOfRows>
+      <NumberOfRows>40</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2174,7 +2948,7 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>LblSONo</ParameterName>
+          <ParameterName>LblSCMNo</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -2294,12 +3068,77 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>25</RowIndex>
-          <ParameterName>LblQtEndDate</ParameterName>
+          <ParameterName>LblFrtChrg</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>26</RowIndex>
+          <ParameterName>LblTax</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>27</RowIndex>
+          <ParameterName>LblQtEndDate</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>28</RowIndex>
+          <ParameterName>LblSubtotal</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>29</RowIndex>
+          <ParameterName>LblCustPO</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>30</RowIndex>
           <ParameterName>LblEnteredBy</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>31</RowIndex>
+          <ParameterName>LblCustNo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>32</RowIndex>
+          <ParameterName>LblCustCode</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>33</RowIndex>
+          <ParameterName>LblOrdNo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>34</RowIndex>
+          <ParameterName>LblJobNo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>35</RowIndex>
+          <ParameterName>LblBillTo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>36</RowIndex>
+          <ParameterName>LblFreightTotal</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>37</RowIndex>
+          <ParameterName>LblRemitTo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>38</RowIndex>
+          <ParameterName>LblRemit1</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>39</RowIndex>
+          <ParameterName>LblRemit2</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
@@ -2440,6 +3279,30 @@ End Function
         <Field Name="CopyTxt">
           <DataField>CopyTxt</DataField>
         </Field>
+        <Field Name="BillToAddr1">
+          <DataField>BillToAddr1</DataField>
+        </Field>
+        <Field Name="BillToAddr2">
+          <DataField>BillToAddr2</DataField>
+        </Field>
+        <Field Name="BillToAddr3">
+          <DataField>BillToAddr3</DataField>
+        </Field>
+        <Field Name="BillToAddr4">
+          <DataField>BillToAddr4</DataField>
+        </Field>
+        <Field Name="BillToAddr5">
+          <DataField>BillToAddr5</DataField>
+        </Field>
+        <Field Name="BillToAddr6">
+          <DataField>BillToAddr6</DataField>
+        </Field>
+        <Field Name="BillToAddr7">
+          <DataField>BillToAddr7</DataField>
+        </Field>
+        <Field Name="BillToAddr8">
+          <DataField>BillToAddr8</DataField>
+        </Field>
         <Field Name="SellToAddr1">
           <DataField>SellToAddr1</DataField>
         </Field>
@@ -2464,8 +3327,8 @@ End Function
         <Field Name="SellToAddr8">
           <DataField>SellToAddr8</DataField>
         </Field>
-        <Field Name="SHExpShipDt">
-          <DataField>SHExpShipDt</DataField>
+        <Field Name="ExpShipDt">
+          <DataField>ExpShipDt</DataField>
         </Field>
         <Field Name="ShipToAddr1">
           <DataField>ShipToAddr1</DataField>
@@ -2494,8 +3357,8 @@ End Function
         <Field Name="SHSellToCustNo">
           <DataField>SHSellToCustNo</DataField>
         </Field>
-        <Field Name="SHExtDocNo">
-          <DataField>SHExtDocNo</DataField>
+        <Field Name="ExtDocNo">
+          <DataField>ExtDocNo</DataField>
         </Field>
         <Field Name="PurchPersName">
           <DataField>PurchPersName</DataField>
@@ -2520,6 +3383,15 @@ End Function
         </Field>
         <Field Name="CopyNo">
           <DataField>CopyNo</DataField>
+        </Field>
+        <Field Name="BillToCustNo">
+          <DataField>BillToCustNo</DataField>
+        </Field>
+        <Field Name="JobNo">
+          <DataField>JobNo</DataField>
+        </Field>
+        <Field Name="OrderNo">
+          <DataField>OrderNo</DataField>
         </Field>
         <Field Name="AmountExclInvDisc">
           <DataField>AmountExclInvDisc</DataField>
@@ -2548,11 +3420,32 @@ End Function
         <Field Name="UnitPriceToPrintFormat">
           <DataField>UnitPriceToPrintFormat</DataField>
         </Field>
+        <Field Name="FrtAmt">
+          <DataField>FrtAmt</DataField>
+        </Field>
+        <Field Name="FrtAmtFormat">
+          <DataField>FrtAmtFormat</DataField>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+        </Field>
+        <Field Name="SubtotalFormat">
+          <DataField>SubtotalFormat</DataField>
+        </Field>
         <Field Name="OLDesc">
           <DataField>OLDesc</DataField>
         </Field>
         <Field Name="PrintFooter">
           <DataField>PrintFooter</DataField>
+        </Field>
+        <Field Name="TaxAmount">
+          <DataField>TaxAmount</DataField>
+        </Field>
+        <Field Name="TaxAmountFormat">
+          <DataField>TaxAmountFormat</DataField>
+        </Field>
+        <Field Name="IsFreight">
+          <DataField>IsFreight</DataField>
         </Field>
       </Fields>
       <Query>

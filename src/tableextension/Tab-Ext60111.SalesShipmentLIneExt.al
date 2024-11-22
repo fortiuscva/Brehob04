@@ -22,9 +22,15 @@ tableextension 60111 "Sales Shipment LIne Ext" extends "Sales Shipment Line"
             caption = 'On Rent';
             DataClassification = ToBeClassified;
         }
-        field(60155; "Resource Type";Enum "Resource Type")
+        field(60155; "Resource Type"; Enum "Resource Type")
         {
             caption = 'Resource Type';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(60160; Freight; Boolean)
+        {
+            caption = 'Freight';
             DataClassification = ToBeClassified;
             Editable = false;
         }
