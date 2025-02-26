@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Sandbox110124",
+            "name": "Sandbox01-23-25",
             "request": "launch",
             "type": "al",
             "tenant": "87a5b67b-1943-4f4a-85bb-66429073fbfa",
             "environmentType": "Sandbox",
-            "environmentName": "Sandbox110124",
+            "environmentName": "Sandbox01-23-25",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
